@@ -15,12 +15,33 @@ class Point
 		Point();
 		Point(int, int);
 		void showPoint();
+		
+		// creating a void overlaod
+		// We need it to send it a const because we don't want to change the argument, and pass by reference to avoid making a copy
+		Point& operator=(const Point& p);
+		//void operator+(const Point& p);
+		
+		
+		friend Point operator+(const Point&, const Point&);
+		friend Point operator-(const Point&, const Point&);
+		
 };
 
 Point::Point():x(0),y(0){}
 Point::Point(int x, int y): x(x), y(y){}
 void Point::showPoint(){cout << x << " " << y << endl;}
-
+// instantiaito of method
+Point& Point::operator=(const Point& p){x= p.x;y=p.y;return *this;}
+//attempt with '+'
+//void Point::operator+(const Point& p){x = p.x;y=p.y;}
+Point operator+(const Point& p1, const Point& p2){
+	Point p3(p1.x+p2.x,p1.y+p2.y);
+	return p3;
+};
+Point operator-(const Point& p1, const Point& p2){
+	Point p3(p1.x-p2.x,p1.y-p2.y);
+	return p3;
+};
 
 //simple line class containing two points
 class Line
@@ -66,12 +87,29 @@ int main()
 		//On the left is the calling object and on the right is the object being sent
 		
 	//3. Test the void assignment operators
+	
+	Point p1(3,5);
+	Point p2;
+	Point p3;
+	
+	p2+p1;
+	//p2.showPoint();
+	
+	
 	//4. Attempt to "chain" (p1 = p2 = p3) and observe the results.
+	// This doesn't work unless  p2 has a return type.
+	p3 = p2 = p1;
+	p3.showPoint();
+	
+	
 	//5. Why does this fail? How do we fix it?
 	//6. What's the difference in the assignment operator and the construtor?
 	
 	
 	//7. Now for something more complicated. I want to be able to say p1 = p2 + p3;
+	
+	p3 = p1 + p2;
+	p3.showPoint();
 		//How does "replacement work?"
 		//Why would an arithmetic expression need two arguments and why does the 
 		//assignment only need one?
@@ -83,11 +121,17 @@ int main()
 		//How could we implement this without making the function a "friend?"
 		//How could we implement it as a member function?
 		
-	//12. Implement the subtraction overload for homework
+	//12. Implement the subtraction overload for homework -- do this 
+	Point p4(3,5);
+	Point p5(1,1);
+	Point p6;
+	p6 = (p4, p5);
+	p6.showPoint();
+	
 	//13. Would compound assignment operators be member functions?
-	//14. Would relational operators be member functions?
-	//15. Implement the equality and inequality operator for points and lines as homework
-	//16. Implement the <> operators for lines based on line length
-	//17. Implement any one of the compound assignment operators for homework
+	//14. Would relational operators be member functions? 
+	//15. Implement the equality and inequality operator for points and lines as homework -- do this returns a bool
+	//16. Implement the <> operators for lines based on line length// dont' do
+	//17. Implement any one of the compound assignment operators for homework -- do this
 	//18. Next class we'll work on streams, conversion, increment/decrement, and subscript
 }
