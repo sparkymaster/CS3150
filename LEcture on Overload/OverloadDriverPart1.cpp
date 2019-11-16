@@ -1,4 +1,11 @@
 //Demo code for operator overload in C++
+// Edited by Parker as an assignment on 11/15/19 
+// CS 3150 -- Dr. Cantrell
+
+/*
+This is an overloading demo that Dr. Cantrell has written for us to complete as a lab assignment. It is focussing on the aspects of overloading operators
+for different classes so that the operators will do specific things for the program we are writting.
+*/
 
 #include <iostream>
 
@@ -24,6 +31,10 @@ class Point
 		
 		friend Point operator+(const Point&, const Point&);
 		friend Point operator-(const Point&, const Point&);
+		friend bool operator==(const Point&, const Point&);
+		friend bool operator!=(const Point&, const Point&);
+		friend Point operator+=(const Point&, int);
+		
 		
 };
 
@@ -43,6 +54,26 @@ Point operator-(const Point& p1, const Point& p2){
 	return p3;
 };
 
+bool operator==(const Point& p1, const Point& p2){
+			if(p1.x == p2.x && p1.y == p2.y)
+		return true;
+			else
+		return false;
+		
+};
+bool operator!=(const Point& p1, const Point& p2){
+			if(p1.x == p2.x && p1.y == p2.y)
+		return false;
+			else
+		return true;
+		
+};
+
+Point operator+=(const Point& p1, int x){
+	Point p3(p1.x+x,p1.y+x);
+	return p3;
+}
+
 //simple line class containing two points
 class Line
 {
@@ -55,11 +86,28 @@ class Line
 		void showLine();
 		Point getP1();
 		
+		friend bool operator==(const Line&, const Line&);
+		friend bool operator!=(const Line&, const Line&);
+		
 };
 
 Line::Line(Point p1, Point p2):p1(p1),p2(p2){}
 Line::Line(){}		// why don't I need to construct the points?
 void Line::showLine(){p1.showPoint(); p2.showPoint();}
+bool operator==(const Line& ln1, const Line& ln2){
+	if(ln1.p1 == ln2.p1 && ln1.p2 == ln2.p2)
+		return true;
+	else
+		return false;
+}
+
+bool operator!=(const Line& ln1, const Line& ln2){
+	if(ln1.p1 != ln2.p1 || ln1.p2 != ln2.p2)
+		return true;
+	else
+		return false;
+}
+
 
 
 int main()
@@ -125,13 +173,52 @@ int main()
 	Point p4(3,5);
 	Point p5(1,1);
 	Point p6;
-	p6 = (p4, p5);
+	p6 = p4-p5;
 	p6.showPoint();
 	
 	//13. Would compound assignment operators be member functions?
 	//14. Would relational operators be member functions? 
 	//15. Implement the equality and inequality operator for points and lines as homework -- do this returns a bool
+	Point p7{2,4};
+	
+	if(p6 == p7){
+		cout<<  "Worked"<<endl;
+	}else
+		cout<< "didn't work"<<endl;
+	
+	if(p6 != p7){
+		cout<<  "Worked"<<endl;
+	}else
+		cout<< "didn't work"<<endl;
+	
+	//cout<<p6 = p3<<endl;
+	Line alpha;
+	alpha = {p1,p2};
+	//alpha.showLine();
+	Line beta;
+	beta = {p1,p2};
+	//beta.showLine();
+	Line gamma;
+	gamma = {p3,p6};
+	
+	
+	if(alpha == beta){
+		cout<<"worked"<<endl;
+	}
+	if(alpha == gamma){
+		cout<<"didn't work"<< endl;
+	}else
+		cout<<"worked"<<endl;
+	
+	
+	
 	//16. Implement the <> operators for lines based on line length// dont' do
 	//17. Implement any one of the compound assignment operators for homework -- do this
+	p6.showPoint();
+	Point p8;
+	p8 = p6+=3;
+	p8.showPoint();
+	
+	
 	//18. Next class we'll work on streams, conversion, increment/decrement, and subscript
 }
