@@ -1,0 +1,38 @@
+C and C++ ProgrammingAssignmentsLab 6 Quote Generator
+Fall Semester 2019
+Home
+Grades
+Modules
+Lab 6 Quote Generator
+Due Tuesday by 11:59pm Points 100 Submitting a file upload File Types cpp and h
+Create a quote generator using classes. This class will need a constructor and a destructor. (Make your destructor clean up anything you created.) It will also need member functions to add/remove/randomly select/display a quote. Make each line a quote to itself. In your driver if your user calls the application with a filename reply with a random quote. If they call it without a filename, then request the filename and then start an interactive menu to:
+
+1. Get random quote
+
+2. Add quote
+
+3. Remove quote by line
+
+4. Get specific quote by line
+
+5. Get number of current quotes
+
+Make sure to at least have:
+
+Private members: filename, file array(or list)
+
+Public functions: add, remove(line #), quote count, getQuote
+
+Separate your driver and class files and use a header file.
+
+Tips: 
+
+- One approach would be to have your constructor read in the file into an array or a more complicated structure and work from there. Another option would be to work with pointers within the file.
+
+- Don't try to edit the file. Just create another one
+
+- Here's a quote file to get you started: Quotes.txtPreview the document
+
+ 
+
+
