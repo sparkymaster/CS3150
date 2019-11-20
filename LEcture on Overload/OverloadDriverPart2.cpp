@@ -15,12 +15,55 @@ class Point
 		Point();
 		Point(int, int);
 		void showPoint();
+		
+		friend ostream& operator<<(ostream&, const Point&);
+		friend istream& operator >>(istream&, Point&);
+		Point operator++(); // pre
+		Point operator++(int);//post
+		
+		int& operator[](int);
 };
 
 Point::Point():x(0),y(0){}
 Point::Point(int x, int y): x(x), y(y){}
 void Point::showPoint(){cout << x << " " << y << endl;} 
 
+int& Point::operator[](int index){
+	if (index == 0){
+		return x;
+	}
+	else return y;
+}
+ostream& operator<<(ostream& ost, const Point& p){
+	
+	
+	return ost<< p.x << ','<< p.y;
+
+}
+
+istream& operator>>(istream& ist, Point& p){
+	cout<< "x = ";
+	ist >> p.x;
+	
+	cout<< "y = ";
+	ist>> p.y;
+	
+	return ist;
+}
+
+Point Point:: operator++(){
+	x++;
+	y++;
+	return *this;
+}
+Point Point:: operator++(int){
+	Point p1 = *this;
+	
+	x++;
+	y++;
+	
+	return p1;
+}
 
 //simple line class containing two points
 class Line
@@ -40,6 +83,21 @@ void Line::showLine(){p1.showPoint(); p2.showPoint();}
 
 int main()
 {
+	
+	Point p1 {3,5};
+	cout<<p1<<endl;
+	
+	Point p2;
+	
+	cin>>p2;
+	cout<<p2<<endl;
+	
+	++p1;
+	cout<<p1<<endl;
+	
+	cout<<p1[0]<<endl;
+	cout<<p1[6]<<endl;
+	
 	//PART 1
 	//1. Review the above classes and answer any questions
 	//2. Create a void assignment overload for each class above
@@ -63,7 +121,7 @@ int main()
 	
 	
 	//PART 2
-	//1. Member function or friend function?
+	//1. Member function or friend function? // friend if everything needs to be accessed -- member for unary operatirion like getters and setters
 	//2. Create a output operator overload for point. 
 	//3. Implement a line output stream operator for homework. 
 	//4. Create an input stream operator for point. 
@@ -71,7 +129,7 @@ int main()
 	//6. Implement a line input stream operator for homework. 
 	//7. Let's talk about conversion. Would that be a member of friend?
 	//8. We aren't going to implement conversion for this class. I don't think it makes
-	//sense in this example, but make sure you read through it. 
+	//sense in this example, but make sure you read through it. // This is a member
 	//9. Increment and decrement friend or member?
 	//10. Create a pre increment overload
 	//11. Create a post increment overload
