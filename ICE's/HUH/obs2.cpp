@@ -9,7 +9,7 @@ public:
     {
         int d[] = {-29, -7, 0, -3, 79, -87, 8, -3, 6, 8, 67, 23};
         c_ = rhs.c_ - d[i++];        
-        b_ = (i-12)?new base(*this):0;
+        b_ = (i-11)?new base(*this):0;
     }
     ~base()
     {
