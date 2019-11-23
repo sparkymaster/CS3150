@@ -1,0 +1,28 @@
+Project ideas:
+
+Court class
+	-two players
+	-ball
+	-12 lines (walls)
+	
+	
+Point class
+	-x pos
+	-y pos
+	
+Line class
+	-two points
+	-angle
+	
+Player class
+	-x pos
+	-y pos
+	-strength
+	-name
+	-score
+	
+Ball class
+	-x pos
+	-y pos
+	-speed
+	-angle
