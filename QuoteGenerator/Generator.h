@@ -8,7 +8,7 @@
 using namespace std;
 
 
-int gcount = 0;
+
 
 
 class Generator
@@ -21,7 +21,9 @@ class Generator
 		
 		
 		
+		
 	public: 
+		int x = 0;
 		vector<string> list;
 		Generator(string filename):filename(filename){
 			ifstream inf(filename);
@@ -33,7 +35,7 @@ class Generator
 	
 			
 			
-			int x = 0;
+			
 			string s;
 			while(inf){
 				getline(inf,s);
@@ -41,7 +43,7 @@ class Generator
 				//cout<<quoteArray[x]<<endl;
 				x++;
 			}
-			gcount++;
+			
 		}
 		~Generator(){cout<<"Object Destroyed"<<endl;}
 		string getQuote(int);
