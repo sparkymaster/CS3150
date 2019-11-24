@@ -20,8 +20,9 @@ class Generator
 		
 		
 		
-	public: 
 		
+	public: 
+		vector<string> list;
 		Generator(string filename):filename(filename){
 			ifstream inf(filename);
 	
@@ -48,6 +49,8 @@ class Generator
 		string randomSelect();
 		void displayQuote(int);
 		int quoteCount();
+		void addQuote(string);
+		
 		
 	// Should I make the vector a static variable?
 
