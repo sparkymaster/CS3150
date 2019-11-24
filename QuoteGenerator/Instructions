@@ -5,7 +5,10 @@ Grades
 Modules
 Lab 6 Quote Generator
 Due Tuesday by 11:59pm Points 100 Submitting a file upload File Types cpp and h
-Create a quote generator using classes. This class will need a constructor and a destructor. (Make your destructor clean up anything you created.) It will also need member functions to add/remove/randomly select/display a quote. Make each line a quote to itself. In your driver if your user calls the application with a filename reply with a random quote. If they call it without a filename, then request the filename and then start an interactive menu to:
+Create a quote generator using classes. This class will need a constructor and a destructor. 
+(Make your destructor clean up anything you created.) It will also need member functions to add/remove/randomly select/display a quote.
+ Make each line a quote to itself. In your driver if your user calls the application with a filename reply with a random quote. 
+ If they call it without a filename, then request the filename and then start an interactive menu to:
 
 1. Get random quote
 

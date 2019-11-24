@@ -8,7 +8,7 @@
 using namespace std;
 
 
-
+int gcount = 0;
 
 
 class Generator
@@ -22,18 +22,38 @@ class Generator
 		
 	public: 
 		
-		Generator(string filename):filename(filename){}
+		Generator(string filename):filename(filename){
+			ifstream inf(filename);
+	
+			if(!inf){
+				cerr<<"Didn't open correctly"<<endl;
+				exit(1);
+			}
+	
+			
+			
+			int x = 0;
+			string s;
+			while(inf){
+				getline(inf,s);
+				quoteArray.push_back(s);
+				//cout<<quoteArray[x]<<endl;
+				x++;
+			}
+			gcount++;
+		}
 		~Generator(){cout<<"Object Destroyed"<<endl;}
-		string getQuote();
+		string getQuote(int);
 		void removeQuote(int);
 		string randomSelect();
-		void displayQuote();
+		void displayQuote(int);
 		int quoteCount();
 		
 	// Should I make the vector a static variable?
 
 		
 };
+
 
 
 
