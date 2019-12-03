@@ -1,6 +1,11 @@
 #include <iostream>
+#include "Structs_and_enum.h"
+#include "Court.h"
+
 
 using namespace std;
+
+int map [20][40];
 
 class Point
 {
@@ -31,12 +36,18 @@ class Ball{
 		Ball(Point, double, int);
 		double getSpeed(){return speed;}
 		void showBall();
+		void moveBall(Point&);
 	
 };
 
 Ball::Ball():b_pos(Point()),speed(0),angle(0){};
 Ball::Ball(Point p1, double speed, int angle): b_pos(p1), speed(speed), angle(angle){};
 void Ball:: showBall(){b_pos.showPoint(); cout<<"Speed is "<<speed<<endl; cout<<"Angle is "<< angle<<" Degrees."<<endl;}
+void Ball:: moveBall(Point& p){
+	b_pos = p;
+	b_pos.showPoint();
+
+}
 
 class Line{
 	private:
@@ -72,6 +83,11 @@ int main(int argc, char * argv[]){
 	
 	Ball b1 {p1,5.33,35};
 	b1.showBall();
+	b1.moveBall(p2);
+	b1.showBall();
+	
+	fillArray();
+	print_array();
 	
 
 	return 0;
