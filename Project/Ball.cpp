@@ -1,14 +1,18 @@
+#include "Ball.h"
+#include "Line.h"
+#include "Point.h"
 #include <iostream>
 
-class Ball{
-	private:
-		int ball_x;
-		int ball_y;
-		double speed;
-		int angle;
-		
-	public:
-		double getSpeed(){return speed};
-		void 
-	
+using namespace std;
+
+
+
+double Ball:: getSpeed(){return speed;};
+Ball::Ball():b_pos(Point()),speed(0),angle(0){};
+Ball::Ball(Point p1, double speed, int angle): b_pos(p1), speed(speed), angle(angle){};
+void Ball:: showBall(){b_pos.showPoint(); cout<<"Speed is "<<speed<<endl; cout<<"Angle is "<< angle<<" Degrees."<<endl;}
+void Ball:: moveBall(Point& p){
+	b_pos = p;
+	b_pos.showPoint();
+
 }

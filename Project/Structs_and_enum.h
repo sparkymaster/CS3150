@@ -8,7 +8,7 @@ struct Player
 	std::string name;
 	int xpos;
 	int ypos;
-	int speed;
+	int score;
 };
 
 

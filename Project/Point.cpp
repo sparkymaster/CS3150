@@ -1,16 +1,8 @@
 #include <iostream>
+#include "Point.h"
+using namespace std;
 
-class Point
-{
-	private:
-		int x;
-		int y;
-	public:
-		Point(int, int);
-		
-		
-	
-};
-
-Point:: Point(int x=0, int y=0):x(x);y(y);{};
+Point::Point(int x, int y):x(x),y(y){};
+Point::Point():x(0),y(0){};
+void Point::showPoint(){cout << x << " " << y << endl;}
 

@@ -1,8 +1,10 @@
 #ifndef COURT
 #define COURT
 
+#include "Structs_and_enum.h"
+
 int randomInt(int, int);
-void fillArray();
+void fillArray(Player, Player);
 void print_array();
 // void found_empty(hero);
 // hero found_spike(hero);

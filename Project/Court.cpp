@@ -7,6 +7,9 @@ This is the map file we are creating a char array to fill all of the field with 
 
 #include "Structs_and_enum.h"
 #include "Court.h"
+#include "Point.h"
+#include "Line.h"
+#include "Ball.h"
 #include <iostream>
 #include <random>
 #include <ctime>
@@ -38,7 +41,7 @@ int randomInt(int x){
 	return (int)rand()%x;	
 }
 //fills array first with blanks, then with randomized special tiles, then creates static entrance and exit
-void fillArray()
+void fillArray(Player p1, Player p2)
 {
 	//fill entire array with border tiles
 	for(int i = 0; i < 20; i++)
@@ -55,6 +58,15 @@ void fillArray()
 				court[i][j] = empty;
 			}
 			
+			if(p1.xpos == j && p1.ypos == i){
+				court[i][j] = winner;
+					
+			}
+			
+			if(p2.xpos == j && p2.ypos == i){
+				court[i][j] = loser;
+					
+			}
 			
 		}
 	}
@@ -192,12 +204,12 @@ void print_array(){
 			if(court[i][j] == 8){
 				std::cout<<char(47);
 			}
-			// if(map[i][j] == 10){
-				// std::cout<<char(42);
-			// }
-			// if(map[i][j] == 11){
-				// std::cout<< char(32);
-			// }
+			if(court[i][j] == 1){
+				std::cout<<char(87)<<char(32);
+			}
+			if(court[i][j] == 2){
+				std::cout<< char(76)<<char(32);
+			}
 			// if(map[i][j] == 12){
 				// std::cout<<char(123);
 			// }
