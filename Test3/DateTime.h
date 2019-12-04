@@ -1,8 +1,9 @@
 #ifndef DATETIME
 #define DATETIME
-
+#include "Date.h"
 #include <iostream>
-class DateTime: public Date
+using namespace std;
+class DateTime : public Date
 {
 	public:
 		int hours;
@@ -11,12 +12,12 @@ class DateTime: public Date
 		DateTime();
 		DateTime(int, int, int, int, int, int);
 		friend ostream& operator <<(ostream&, const DateTime&);
-		friend istream& opeartor >>(istream&, DateTime&);
+		friend istream& operator >>(istream&, DateTime&);
 	
 	
-	private:
 	
 	
-}
+	
+};
 
 #endif

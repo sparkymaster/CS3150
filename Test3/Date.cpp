@@ -9,11 +9,14 @@ using namespace std;
 
 
 
-Date::Date operator= (const Date& d){
-	Date d1{d.day,d.month,d.year};
-	return d1;
+Date& Date::operator= (const Date& d){
+	this->day = d.day;
+	this->month = d.month;
+	this->year = d.year;
+	
+	return *this;
 }
-Date::Date operator++(){
+Date Date::operator++(){
 	day++;
 	if(day>31){
 		day = 1;
@@ -27,7 +30,7 @@ Date::Date operator++(){
 	return *this;
 
 }
-Date::Date operator++(int x){
+Date Date::operator++(int x){
 	Date d1 = *this;
 	
 	day++;
@@ -64,7 +67,7 @@ Date operator+(const Date& d1, const Date& d2){
 		tempmonth++;
 		tempday-=31;
 	}
-	if(temptmonth>12){
+	if(tempmonth>12){
 		tempyear++;
 		tempmonth-=12;
 	}
@@ -80,7 +83,7 @@ Date operator- (const Date& d1, const Date& d2){
 		tempmonth--;
 		tempday+=31;
 	}
-	if(temptmonth<1){
+	if(tempmonth<1){
 		tempyear--;
 		tempmonth+=12;
 	}
@@ -118,7 +121,7 @@ Date::Date() : day(1), month(1), year(1) {}
 Date::Date(const Date& oldDate):day(oldDate.day),month(oldDate.month),year(oldDate.year){}
 	
 
-}
+
 Date::Date(int day, int month, int year) : day(day), month (month), year(year) {
 	if (day>31 || day<1){
 		this->day = 1;
