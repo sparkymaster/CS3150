@@ -16,3 +16,9 @@ void Ball:: moveBall(Point& p){
 	b_pos.showPoint();
 
 }
+int Ball::getX(){
+	return b_pos.getX();
+}
+int Ball::getY(){
+	return b_pos.getY();
+}

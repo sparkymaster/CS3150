@@ -5,7 +5,7 @@
 #include "Ball.h"
 
 int randomInt(int, int);
-void fillArray(Player, Player, Ball);
+void fillArray(Player, Player, Ball[], int);
 void print_array();
 // void found_empty(hero);
 // hero found_spike(hero);

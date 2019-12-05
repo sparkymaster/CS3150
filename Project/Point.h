@@ -10,6 +10,8 @@ class Point
 		Point();
 		Point(int, int);
 		void showPoint();
+		int getX();
+		int getY();
 		
 		
 	

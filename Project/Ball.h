@@ -12,6 +12,8 @@ class Ball{
 		Ball();
 		Ball(Point, double, int);
 		double getSpeed();
+		int getX();
+		int getY();
 		void showBall();
 		void moveBall(Point&);
 	

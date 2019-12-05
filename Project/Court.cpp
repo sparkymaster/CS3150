@@ -24,7 +24,7 @@ Make printArray put 'H' for where hero currently is? Should be doable without cr
 /*
 Here we created the map as a global two dimensional array, since we will never change its size.
 */
-int court [20][10]; // y then x
+int court [40][20]; // y then x
 enum tile_type empty = 	EMPTY;
 enum tile_type v_wall = V_WALL;
 enum tile_type h_wall = H_WALL;
@@ -35,23 +35,23 @@ enum tile_type loser = 	LOSER;
 enum tile_type ball_space = BALL_SPACE;
 enum tile_type line_space = LINE_SPACE;
 
-
+using namespace std;
 
 int randomInt(int x){
 	return (int)rand()%x;	
 }
 //fills array first with blanks, then with randomized special tiles, then creates static entrance and exit
-void fillArray(Player p1, Player p2, Ball b1)
+void fillArray(Player p1, Player p2, Ball b1[], int size)
 {
 	//fill entire array with border tiles
-	for(int i = 0; i < 20; i++)
+	for(int i = 0; i < 40; i++)
 	{
-		for(int j = 0; j < 10; j++)
+		for(int j = 0; j < 20; j++)
 		{
-			if (i==0 || i == 19 ){
+			if (i==0 || i == 39 ){
 				court[i][j] = h_wall;
 			}
-			else if((j ==0 && i!=0 && i!= 19)||(j == 9 && i!=0 && i!=19)){
+			else if((j ==0 && i!=0 && i!= 39)||(j == 19 && i!=0 && i!=39)){
 				court[i][j] = v_wall;
 			}
 			else{
@@ -67,13 +67,17 @@ void fillArray(Player p1, Player p2, Ball b1)
 				court[i][j] = loser;
 					
 			}
+			for(int x = 0;x<size;x++)
+				if(b1[x].getX() == j && b1[x].getY()  == i){
+					court[i][j] = ball_space;
+				}
 			
 		}
 	}
 	court[0][0] = q2_corner;
-	court[0][9] = q1_corner;
-	court[19][0] = q1_corner;
-	court[19][9] = q2_corner;
+	court[0][19] = q1_corner;
+	court[39][0] = q1_corner;
+	court[39][19] = q2_corner;
 	// for(int i = 0; i < 30; i++)
 	// {
 		// for(int j = 0; j < 5; j++)
@@ -183,8 +187,8 @@ that has the opposite speed by multiplying by a -1.
 // using the various ASCII codes to print characters to the array where the 
 // enum type corresponds.
 void print_array(){
-	for(int i=0;i<20;i++){
-		for(int j = 0; j<10;j++){
+	for(int i=0;i<40;i++){
+		for(int j = 0; j<20;j++){
 			// if(i == h.y && j == h.x){
 				// std::cout<<"H";
 				// continue;
@@ -209,6 +213,9 @@ void print_array(){
 			}
 			if(court[i][j] == 2){
 				std::cout<< char(76)<<char(32);
+			}
+			if(court[i][j] == 3){
+				cout<<char(111)<<char(32);
 			}
 			// if(map[i][j] == 12){
 				// std::cout<<char(123);
