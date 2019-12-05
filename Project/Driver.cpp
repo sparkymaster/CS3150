@@ -18,6 +18,14 @@ using namespace std;
 int main(int argc, char * argv[]){
 	//cout<<"Hello World!"<<endl;
 	
+	if( argc != 2){
+		cout<<"Wrong number of arguments. Please enter a 1 to see a random ideal kill shot or 2 to see a random ideal passing shot from Kane Waselenchuck."<<endl;
+		exit(1);
+	}
+	
+	if(stoi(argv[1]) == 1){
+	
+	
 	Point points[12];
 	// Point p1 {12,12};
 	
@@ -105,11 +113,60 @@ int main(int argc, char * argv[]){
 	Ball balls[10];
 	for(int x = 2;x<12;x++){
 		balls[x-2].moveBall(points[x]);
-		balls[x-2].showBall();
+		fillArray(player1,player2,balls,size);
+		print_array();
+		//balls[x-2].showBall();
 	}
 	
-	fillArray(player1,player2,balls,size);
-	print_array();
+	}
+	else if(stoi(argv[1]) == 2){
+		//cout<< "It worked!"<<endl;
+		if( argc != 2){
+		cout<<"Wrong number of arguments. Please enter a 1 to see a random ideal kill shot or 2 to see a random ideal passing shot from Kane Waselenchuck."<<endl;
+		exit(1);
+	}
+	
+	if(stoi(argv[1]) == 1){
+	
+	
+	Point points[12];
+	int size = 10;
+	int tempx;
+	int tempy;
+	
+	ifstream inf("Passes.txt");
+	if(!inf){
+		cerr << "unable to pen file for reading"<<endl;
+		exit(1);
+	}
+	
+	
+	
+	for(int x = 0;x<12;x++){
+			inf >> tempx;
+			inf >> tempy;
+			 
+			points[x] = {tempx,tempy};
+			points[x].showPoint();
+	}
+	
+	Player player1{"Bob",points[0].getX(),points[0].getY(),20};
+	Player player2{"Joe",points[1].getX(),points[1].getY(),3};
+	
+	Ball balls[10];
+	for(int x = 2;x<12;x++){
+		balls[x-2].moveBall(points[x]);
+		fillArray(player1,player2,balls,size);
+		print_array();
+		//balls[x-2].showBall();
+	}
+	}
+	else{
+		cout<<"Please try to enter a a one or a two."<<endl;
+		exit(1);
+	}
+		
+	
 
 	return 0;
 	
