@@ -41,7 +41,7 @@ int randomInt(int x){
 	return (int)rand()%x;	
 }
 //fills array first with blanks, then with randomized special tiles, then creates static entrance and exit
-void fillArray(Player p1, Player p2)
+void fillArray(Player p1, Player p2, Ball b1)
 {
 	//fill entire array with border tiles
 	for(int i = 0; i < 20; i++)
