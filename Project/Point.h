@@ -12,6 +12,7 @@ class Point
 		void showPoint();
 		int getX();
 		int getY();
+		Point& operator=(const Point&);
 		
 		
 	

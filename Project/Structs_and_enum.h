@@ -2,6 +2,7 @@
 #define STRUCTSENUMS
 
 #include <string>
+#include "Point.h"
 
 struct Player
 {

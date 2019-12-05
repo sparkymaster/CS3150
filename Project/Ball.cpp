@@ -13,7 +13,7 @@ Ball::Ball(Point p1, double speed, int angle): b_pos(p1), speed(speed), angle(an
 void Ball:: showBall(){b_pos.showPoint(); cout<<"Speed is "<<speed<<endl; cout<<"Angle is "<< angle<<" Degrees."<<endl;}
 void Ball:: moveBall(Point& p){
 	b_pos = p;
-	b_pos.showPoint();
+	//b_pos.showPoint();
 
 }
 int Ball::getX(){

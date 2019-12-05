@@ -11,3 +11,8 @@ int Point::getX(){
 int Point::getY(){
 	return y;
 }
+Point& Point::operator=(const Point& p1){
+	this -> x = p1.x;
+	this -> y = p1.y;
+	return *this;
+}
