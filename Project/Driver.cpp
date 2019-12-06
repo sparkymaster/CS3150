@@ -7,9 +7,11 @@
 #include "Ball.h"
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
 
 
 using namespace std;
+using namespace std::chrono;
 
 //int court [20][10];
 
@@ -50,7 +52,7 @@ int main(int argc, char * argv[]){
 	
 	
 		srand(time(NULL));
-		int r  = (rand()%5)+1;
+		int r  = (rand()%5);
 	
 	//cout<<r<<endl;
 	
@@ -114,7 +116,7 @@ int main(int argc, char * argv[]){
 	// cout<<player2.score<<endl;
 	
 	
-	
+	auto start = high_resolution_clock::now();
 	if(choice == 1){
 		
 		ifstream inf("Kills.txt");
@@ -124,7 +126,7 @@ int main(int argc, char * argv[]){
 			exit(1);
 		}
 	
-	
+		
 		
 		for(int x = 0;x<r*24;x++){
 			inf>>temp;
@@ -173,6 +175,7 @@ int main(int argc, char * argv[]){
 			exit(1);
 		}
 		
+		
 		for(int x = 0;x<r*24;x++){
 			inf>>temp;
 		}
@@ -197,9 +200,14 @@ int main(int argc, char * argv[]){
 			print_array();
 			//balls[x-2].showBall();
 		}
-	//cout<<r<<endl;
+		
 	}
 	
+	auto stop = std::chrono::high_resolution_clock::now();
+	//cout<<r<<endl;
+	
+		auto duration = duration_cast<microseconds>(stop - start); 
+ 		cout << "The program took "<<duration.count() <<" microseconds."<< endl; 
 	num--;
 	}
 	

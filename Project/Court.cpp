@@ -1,10 +1,3 @@
-/*
-Created by Parker Evans on 9/19
-with the help of Skyler Clark 
-
-This is the map file we are creating a char array to fill all of the field with an '*' and then when explored to a 'space'
-*/
-
 #include "Structs_and_enum.h"
 #include "Court.h"
 #include "Point.h"
@@ -16,14 +9,8 @@ This is the map file we are creating a char array to fill all of the field with 
 #include <cstdlib>
 #include <unistd.h>
 
-/*******************TODO***********************
-Make printArray put 'H' for where hero currently is? Should be doable without creating another enum.
 
-***********************************************/
 
-/*
-Here we created the map as a global two dimensional array, since we will never change its size.
-*/
 int court [40][20]; // y then x
 enum tile_type empty = 	EMPTY;
 enum tile_type v_wall = V_WALL;
