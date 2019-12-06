@@ -5,7 +5,8 @@
 #include "Point.h"
 #include "Line.h"
 #include "Ball.h"
-
+#include <cstdlib>
+#include <ctime>
 
 
 using namespace std;
@@ -18,15 +19,32 @@ using namespace std;
 int main(int argc, char * argv[]){
 	//cout<<"Hello World!"<<endl;
 	
-	if( argc != 2){
-		cout<<"Wrong number of arguments. Please enter a 1 to see a random ideal kill shot or 2 to see a random ideal passing shot from Kane Waselenchuck."<<endl;
+	if( argc != 2 || (stoi(argv[1])!=1 && stoi(argv[1])!=2) ){
+		cerr<<"Wrong arguments. Please enter a number of random shots to see from Kane Waselenchuck."<<endl;
 		exit(1);
 	}
 	
-	if(stoi(argv[1]) == 1){
-	
-	
+	int num = stoi(argv[1]);
+	int choice;
+	Ball balls[10];
 	Point points[12];
+	int size = 10;
+	int tempx;
+	int tempy;
+	int temp;
+	
+	while(num>0){
+	
+		cout<< "Please enter a 1 to see a kill shot, or a 2 for a passing shot."<<endl;
+	
+		cin >> choice;
+	
+	
+		srand(time(NULL));
+		int r  = (rand()%5)+1;
+	
+	//cout<<r<<endl;
+	
 	// Point p1 {12,12};
 	
 	// Point p2{13,10};
@@ -74,7 +92,7 @@ int main(int argc, char * argv[]){
 	
 	
 	// Ball balls[10];// = {b1,b2,b3,b4,b5,b6,b7,b9,b10};
-	int size = 10;
+	
 	// cout<<size<<endl;
 	
 	
@@ -88,84 +106,93 @@ int main(int argc, char * argv[]){
 	
 	
 	
-	int tempx;
-	int tempy;
-	
-	ifstream inf("Kills.txt");
-	if(!inf){
-		cerr << "unable to pen file for reading"<<endl;
-		exit(1);
-	}
-	
-	
-	
-	for(int x = 0;x<12;x++){
-			inf >> tempx;
-			inf >> tempy;
-			 
-			points[x] = {tempx,tempy};
-			points[x].showPoint();
-	}
-	
-	Player player1{"Bob",points[0].getX(),points[0].getY(),20};
-	Player player2{"Joe",points[1].getX(),points[1].getY(),3};
-	
-	Ball balls[10];
-	for(int x = 2;x<12;x++){
-		balls[x-2].moveBall(points[x]);
-		fillArray(player1,player2,balls,size);
-		print_array();
-		//balls[x-2].showBall();
-	}
-	
-	}
-	else if(stoi(argv[1]) == 2){
-		//cout<< "It worked!"<<endl;
-		if( argc != 2){
-		cout<<"Wrong number of arguments. Please enter a 1 to see a random ideal kill shot or 2 to see a random ideal passing shot from Kane Waselenchuck."<<endl;
-		exit(1);
-	}
-	
-	if(stoi(argv[1]) == 1){
-	
-	
-	Point points[12];
-	int size = 10;
-	int tempx;
-	int tempy;
-	
-	ifstream inf("Passes.txt");
-	if(!inf){
-		cerr << "unable to pen file for reading"<<endl;
-		exit(1);
-	}
-	
-	
-	
-	for(int x = 0;x<12;x++){
-			inf >> tempx;
-			inf >> tempy;
-			 
-			points[x] = {tempx,tempy};
-			points[x].showPoint();
-	}
-	
-	Player player1{"Bob",points[0].getX(),points[0].getY(),20};
-	Player player2{"Joe",points[1].getX(),points[1].getY(),3};
-	
-	Ball balls[10];
-	for(int x = 2;x<12;x++){
-		balls[x-2].moveBall(points[x]);
-		fillArray(player1,player2,balls,size);
-		print_array();
-		//balls[x-2].showBall();
-	}
-	}
-	else{
-		cout<<"Please try to enter a a one or a two."<<endl;
-		exit(1);
-	}
+	if(choice == 1){
 		
+		ifstream inf("Kills.txt");
+		
+		if(!inf){
+			cerr << "unable to pen file for reading"<<endl;
+			exit(1);
+		}
+	
+	
+		
+		for(int x = 0;x<r*24;x++){
+			inf>>temp;
+		}
+	
+		for(int x = 0;x<12;x++){
+			inf >> tempx;
+			inf >> tempy;
+			 
+			points[x] = {tempx,tempy};
+			points[x].showPoint();
+		}
+	
+		Player player1{"Bob",points[0].getX(),points[0].getY(),20};
+		Player player2{"Joe",points[1].getX(),points[1].getY(),3};
+	
+	
+	
+		for(int x = 2;x<12;x++){
+			balls[x-2].moveBall(points[x]);
+			fillArray(player1,player2,balls,size);
+			print_array();
+			//balls[x-2].showBall();
+		}
+	}
+	
+	
+	
+	
+	if(choice == 2){
+		//cout<< "It worked!"<<endl;
+		
+	
+		//Point points[12];
+		//int size = 10;
+		//int tempx;
+		//int tempy;
+		//srand(time(NULL));
+		//int r  = (rand()%5);
+	
+	
+		ifstream inf("Passes.txt");
+		
+		if(!inf){
+			cerr << "unable to pen file for reading"<<endl;
+			exit(1);
+		}
+		
+		for(int x = 0;x<r*24;x++){
+			inf>>temp;
+		}
+	
+	
+		for(int x = 0;x<12;x++){
+			inf >> tempx;
+			inf >> tempy;
+			 
+			points[x] = {tempx,tempy};
+			points[x].showPoint();
+		}
+	
+		Player player1{"Bob",points[0].getX(),points[0].getY(),20};
+		Player player2{"Joe",points[1].getX(),points[1].getY(),3};
+	
+		
+		
+		for(int x = 2;x<12;x++){
+			balls[x-2].moveBall(points[x]);
+			fillArray(player1,player2,balls,size);
+			print_array();
+			//balls[x-2].showBall();
+		}
+	//cout<<r<<endl;
+	}
+	
+	num--;
+	}
 	
 
 	return 0;
