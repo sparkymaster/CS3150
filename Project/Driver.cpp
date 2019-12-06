@@ -19,8 +19,17 @@ using namespace std;
 int main(int argc, char * argv[]){
 	//cout<<"Hello World!"<<endl;
 	
-	if( argc != 2 || (stoi(argv[1])!=1 && stoi(argv[1])!=2) ){
-		cerr<<"Wrong arguments. Please enter a number of random shots to see from Kane Waselenchuck."<<endl;
+	try{
+		int ynottry = stoi(argv[1]);
+		
+	}
+	catch(std::invalid_argument& e){
+		cerr<<"You endered a wrong type of argument. please enter a 1 or a 2."<<endl;
+		exit(1);
+	}
+	
+	if( argc != 2){
+		cerr<<"Wrong number of arguments. Please enter a number of random shots to see from Kane Waselenchuck."<<endl;
 		exit(1);
 	}
 	
