@@ -1,3 +1,24 @@
+/*
+* Parker Evans Final Project
+* CS 3150 --  Dr. Cantrell
+* 12/6/19
+*
+* This program is a strategy tool designed for racquetball players to view the ideal passing and kill shots in Racquetball. It has taken 
+* several of the best shots and ideal positions from Kane Waselenchuck and Rocky Carson the number 1 and 2 players in the world and helps
+* average students learn from which positions they should hit certain shots. This program covers almost all topics discussed in the course
+* of this semester. It covers all basic topics, and also includes a couple of more in-depth topics. There needs to be a number of scenarios 
+* the user wishes to see implemented as a command-line argument. The program will display the ball's progression and both players in a 
+* racquetball scenario from the 2019 Shamrock Shootout Tournament. I have included a few operator overloads on my own classes, and included
+* two topicc that we never used or talked about in class. These are Exception Handling and use of a Timer to validate the efficiency of my 
+* program. This code also demstrates efficient use of object oriented programming with inheritance. If we were given more time, and more
+* guidance on graphics, I would attempt to implement a GUI to accompany this progam to show better ball movement.
+*
+*
+*/
+
+
+
+
 #include <iostream>
 #include <fstream>
 #include "Structs_and_enum.h"

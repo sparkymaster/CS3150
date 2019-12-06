@@ -24,13 +24,10 @@ enum tile_type line_space = LINE_SPACE;
 
 using namespace std;
 
-int randomInt(int x){
-	return (int)rand()%x;	
-}
-//fills array first with blanks, then with randomized special tiles, then creates static entrance and exit
+
+
 void fillArray(Player p1, Player p2, Ball b1[], int size)
 {
-	//fill entire array with border tiles
 	for(int i = 0; i < 40; i++)
 	{
 		for(int j = 0; j < 20; j++)
@@ -65,121 +62,13 @@ void fillArray(Player p1, Player p2, Ball b1[], int size)
 	court[0][19] = q1_corner;
 	court[39][0] = q1_corner;
 	court[39][19] = q2_corner;
-	// for(int i = 0; i < 30; i++)
-	// {
-		// for(int j = 0; j < 5; j++)
-		// {
-			// //random column to fill, up to 5 special tiles per row, limits unbeatable maps
-			// int col = randomInt(10);		
-			
-			// //generate random 'trap' tile to place
-			// int r = randomInt(5);
-			// if(r == 0){map[i][col] = spike_trap;}
-			// if(r == 1){map[i][col] = qs_trap;}
-			// if(r == 2){map[i][col] = insult_trap;}
-			// if(r == 3){map[i][col] = good_potion;}
-			// if(r == 4){map[i][col] = bad_potion;}
-		// }
-	// }
-	//place entrance and exit
-	// map[0][0] = entrance;
-	// map[29][9] = end;
+	
 }
 
-/*
-Here we are creating the explored room method of change the tile. Need to add change of status to tiles.
-*/
-// void found_empty(hero h){
-	// std:: cout<<"Just another empty room, that's good right?"<<std::endl;
-	// map[h.y][h.x] = empty_ex;	// This is a space for empty
-// }
 
-/*This is a method to find the spike trap. This will cause a random amount of damage and return a hero. It also takes a copy of the hero
-that is exploring the dungeon. 
-*/
-// hero found_spike(hero h){
-	
-	// if(h.name == "Indiana"){
-		// if(randomInt(10)>4){
-			// std::cout << "Indiana Jones uses his whip to swing to safety. Trap avoided!"<<std::endl;
-			// map[h.y][h.x] = spike_trap_ex;	 // This is a carrot for spike
-			// return h;
-		// }
-	// }
-	// int rint = rand()%10+1;
-	
-	// std::cout<<"You fell into a spike trap! You lost " << rint << " hit points."<<std::endl;
-	// map[h.y][h.x] = spike_trap_ex;	 // This is a carrot for spike
-	// h.health-=rint;
-	// h = take_damage(h);
-	
-	// return h;
-// }
-// /* Trap method for when quicksand  using timer to hurt users until they type the name of their character. Advice from a thread on how to users 
-// the timer.
-// */
-
-// hero found_qs(hero h){
-	// if(h.name == "Indiana"){
-		// if(randomInt(10)>4){
-			// std::cout << "Indiana Jones grabs a snake to climb out of the sand. Trap avoided!"<<std::endl;
-			// map[h.y][h.x] = qs_trap_ex;	// This is an exclamation mark
-			// return h;
-		// }
-	// }
-	// int health_before = h.health;	
-	// std::cout<<"Quick Sand! Quickly Type your hero's first name!"<<std::endl;
-	// std::string s1;
-		
-	// double temp;	
-	// clock_t time_start;
-	// time_start = clock();
-		
-	// while(s1!=h.name){
-	// std::cin>>s1;
-	// }
-	// temp = (clock()-time_start)/1000;
-	// h.health-=temp;
-	// std::cout << "You lost " << health_before - h.health << " hit points.\n";
-	// map[h.y][h.x] = qs_trap_ex;	// This is an exclamation mark
-	// return take_damage(h);			// come back and change
-// }
-
-
-/*We are creating a health potion to allow for the hero to make up some of the hp he has lost.
-*/
-
-// hero found_good_potion(hero h){
-	// int health_before = h.health;
-	// h = gain_health(h);
-	// std:: cout << "A health potion! You gained " << h.health - health_before << " hit points.  Phew... That was needed."<< std:: endl;
-	// map[h.y][h.x] = good_potion_ex;	// This is the plus signal
-	// return h;
-// }
-/*We created the idea of a confused potion that makes the hero's speeds are reversed and thus N = S and so further. This returns a new hero
-that has the opposite speed by multiplying by a -1.
-*/
-
-// hero found_bad_potion(hero h){
-	// std:: cout << "You suddenly feel really dizzy... is up still up?"<< std::endl;
-	// map[h.y][h.x] = bad_potion_ex; // This is the asterix
-	// return confuse(h);
-// }
-
-// void set_entrance(){
-	// map[0][0] = 91; // This is the open bracket for the start space
-// }
-
-// Parker: I have written up the code for printing the array. Here we are
-// using the various ASCII codes to print characters to the array where the 
-// enum type corresponds.
 void print_array(){
 	for(int i=0;i<40;i++){
 		for(int j = 0; j<20;j++){
-			// if(i == h.y && j == h.x){
-				// std::cout<<"H";
-				// continue;
-			// }
 			if(court[i][j] == 5){
 				std::cout << char(124);
 			}
@@ -204,21 +93,8 @@ void print_array(){
 			if(court[i][j] == 3){
 				cout<<char(111)<<char(32);
 			}
-			// if(map[i][j] == 12){
-				// std::cout<<char(123);
-			// }
-			// if(map[i][j] == 13){
-				// std::cout<<"E";
-			// }
-			
-			
-		}
+		}	
 		std::cout<<" "<< std::endl;
 	}
 	
 }
-
-// int get_tile(hero h)
-// {
-	// return map[h.y][h.x];
-// }
