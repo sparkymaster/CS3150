@@ -1,0 +1,36 @@
+What is a compiler? -- It is a program that changes high languages to become executable programs for the machine language to run.
+What is machine code?  -- Machine code is direct 0's and 1's to have a set list of instructions for the computer to run.
+Why was C developed? -- developed for operation systems. a language to created new operating systems.
+What is the difference in C and C++? -- C++ is essentially C; but with object oriented programming capabilities.
+What is the difference between compiling a Java program and a C++ program? -- A Java program uses a Virtual Machine to compile and create .class files from .java files, whilst C++ requires to compile at run time. 
+What are the three steps to compiling a C++ program? -- Writing the code in C++, then using the compiler to create the object files, then linking and running them together,.
+What is the purpose of a make file? These are files that describe how to build a program.
+What is a .o file? -- these are object files, created by the compiler into a mahine langugae called an object file.
+What is C/C++ the most useful for? -- It is very useful to program operating systems and other proggrams that need to be be very quick.
+What makes C/C++ dangerous? -- Its trust in the programmer and freedom to access memory and other files on the computer.
+C++ is or is not case sensitive? -- Like all others it is case sensitive.
+Do blank spaces and new lines within C++ code matter other than separating tokes? -- No, blank spaces mean nothing to the computer.
+What are the two ways to add comments to C++ code? -- We can have a "//" to comment everything to the end of the line, and a /* */ to have a block or multi-line comment section.
+Which is C style comment? -- These are the // comments that are sinlge line comments and continue until the end of the line.
+What is STDOUT, STDERR? -- These are prebuilt memotry objects used for output to command line, and for error messgae. ERR is the error messages.
+What is the "<<" operator and what does it do?  -- This is the insertion operator and it is used to show what is being input.
+Name some langugages that derivd from C/C++. -- Java, Oak, a bunch of others.
+
+
+9/3/2019
+
+:: is the scope resolution operator
+std == is the standard set of libraries that the computer already knows.
+can skip using namespace by the keyword 'using namespace ____ '.
+
+example
+
+using namespace std;
+ int main()
+ {
+ cout << "Hello World" << endl;
+ return 0;
+ }
+ 
+difference between endl and \n, the difference is that \n has only one function, while endl moves to the end, then flushes the output buffer.'
+ 

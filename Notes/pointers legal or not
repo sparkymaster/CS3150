@@ -1,0 +1,15 @@
+char* const x = new char [10]
+const int * const t = 7k;
+char *** w = &y
+*n = 897   -- legal
+int &y = g++;
+float& a=b; -- legal
+int x[] = 9;  -- illegal
+int &x = 99; -- illegal
+char a = b; -- legal
+double x[7] = 4; -- 
+sring* y = &x; -- legal
+float **q = 5; -- illegal
+float (*pf)(float); -- legal
+++(*x); -- legal
+int *x[99]; -- legal
