@@ -1,0 +1,179 @@
+Know vector syntax.
+	std::vector<int> alpha {1,2,3,4,54};
+	length = alpha.size();
+	alpha.resize(sizeIwant);
+	
+
+Explain the difference in size and capacity.
+
+	size is the number of currently using items in the vector
+	capacity is the number of elements that could be used by the program that have been allocated to be available.
+
+Know how to make a vector act like a stack.
+	
+	alpha.push_back(thing I want to add)
+	alpha.back();   -- Return the top element of stack.
+	alpha.pop_back() -- pops the element off the top of stack
+	
+
+
+Explain what a data stream is.
+	This is a sequence of bytes some order.
+What are the primary input and output streams in C++?
+	 The primary are istream, ostream.
+What operators are used to get and put data within streams?
+	Extraction and Insertion operators.
+Explain cin, cout, cerr, and clog.
+	cin is the operatoin to pipe data into something else.
+	cout is the operation to pipe data out of something else.
+	cerr is the standard error that will pop-up in the event whereever an error ocurs it provides  nbuffered output.
+	clog provides buffered output so that you will receive all of the errors.
+How can you limit the number of inputs from a stream?
+	setw() limits the number characters to be stored.
+What do these do: ignore(), ignore(int nCount), peek(), unget(), putback(char ch) 
+	ignore() -- allows to you skip the first character.
+	ignore(int nCount) -- allows to skip the nCount number of characters
+	peek() -- returns the value but doens't increment the pointer
+	unget() -- puts whatever was get() back onto the object, and reset pointer to that peice.
+	putback(char ch) -- allows you to insert a character to be read into the file next.
+What is the purpose of a string stream?
+	Allows for buffering of a text file or to import the entire document, but buffered.
+	Allow for input processing line by line.
+How do you clear a string stream?
+	You can set it to empty using os.str(std:sting());)
+	You can set it to empty by using os.clear();
+	
+Read in a string print each character unless it is a number or space.
+	
+#include <iostream>
+#include <cctype>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+   while(1){
+	
+	cout<< "Enter a string"<< endl;
+	std:: string str;
+	std::getline(cin, str);
+	
+	for (int x = 0; x<str.length(); x++){
+		if(!isdigit(str[x]) && !isspace(str[x])){
+				cout<<str[x];
+		}
+		else
+		continue;
+	
+	}	
+	break;
+	}
+    return 0;
+}
+How do you setup a file as input or output?
+
+	input
+	ifstream inf("NameofFile.txt");
+	
+	if(!inf){
+		cerr<< "Stuff went wrong"<<endl;
+		exit(1);
+	}
+	
+	while(inf){
+		std:: string str;
+		getline(inf, str);
+		cout<<str<<end;
+		}
+		
+		
+	ouput
+	ofstream outf("NameofFile.txt");
+	
+	if(!outf){
+		cerr << "Stuff went wrong"<<endl;
+		exit(1);
+	}
+	
+	outf<<"Whatever I want to print to a file"<<endl;
+	outf<< "Whatever else I wanted to print to the file"<< endl;
+	
+	return 0;
+
+What are file modes?
+	These are specific fuctions that will allow to to either 
+What’s the file pointer?
+	This is where in the file the program will be 'looking' next. It is default to set looking at the beginning of the file
+What should you use if you are wanting to change the contents of a file without writing a new file?
+	#include <fstream>
+#include <iostream>
+
+
+int main()
+{
+    using namespace std;
+ 
+	// Note we have to specify both in and out because we're using fstream
+    fstream iofile("Sample.dat", ios::in | ios::out);
+ 
+    // If we couldn't open iofile, print an error
+    if (!iofile)
+    {
+        // Print an error and exit
+        cerr << "Uh oh, Sample.dat could not be opened!" << endl;
+        exit(1);
+    }
+ 
+    char chChar; // we're going to do this character by character
+ 
+    // While there's still data to process
+    while (iofile.get(chChar))
+    {
+        switch (chChar)
+        {
+            // If we find a vowel
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'O':
+            case 'U':
+ 
+               
+               //Option1
+                // Back up one character
+               
+                iofile.seekg(-1, ios::cur);
+ 
+                // Because we did a seek, we can now safely do a write, so
+                // let's write a # over the vowel
+                iofile << '#';
+ 
+ 
+ 
+                //Option 2
+                
+                // iofile.seekp('#', ios::cur)
+                
+                
+                
+                // Now we want to go back to read mode so the next call
+                // to get() will perform correctly.  We'll seekg() to the current
+                // location because we don't want to move the file pointer.
+                iofile.seekg(iofile.tellg(), ios::beg);
+ 
+                break;
+        }
+    }
+ 
+    return 0;
+}
+What’s the advantage to use file IO instead of internal memory?
+	Adv is to be able to reduce memory comsumption for very large files,
+	adv is to 
+
