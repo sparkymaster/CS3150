@@ -1,0 +1,26 @@
+Goals: 
+
+Demonstrate the ability to create and compile a program 
+Demonstrate the ability to correctly submit a lab assignment
+Demonstrate the capability to create console output
+Demonstrate quality coding
+
+Assignment Description:
+
+Write a program that will output a text string or your personal logo in ASCII art. There are plenty of websites out there that will help with this conversion. 
+
+For example: 
+
+https://www.ascii-art-generator.org (Links to an external site.)
+http://patorjk.com/software/taag/ (Links to an external site.)
+
+Make sure to use comments and include a comment block at the top of your file. 
+
+Hints: 
+
+Be careful of the symbols you use to make the art. If you are experiencing problems, an extra ‘\’ before a symbol may help. 
+Adjusting the command line window size might also be necessary to view the output correctly.
+
+Submit: 
+
+All source code and a compiled executable.
